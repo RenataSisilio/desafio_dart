@@ -33,8 +33,9 @@ void menu() {
       break;
     case 3:
       stdout.write('\nCPF/CNPJ do sócio: ');
-      input = int.tryParse(stdin.readLineSync() ?? '0');
-      //Registro.buscaSocioDoc(input);
+      input = int.tryParse(stdin.readLineSync()!) ?? 0;
+      Registro.buscaSocioDoc(input);
+      stdin.readLineSync();
       menu();
       break;
     case 4:
@@ -46,6 +47,7 @@ void menu() {
       stdout.write('\nID da empresa: ');
       var input = stdin.readLineSync() ?? '0';
       Registro.excluir(input);
+      menu();
       break;
     case 6:
       break;

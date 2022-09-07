@@ -15,7 +15,6 @@ class Registro {
       PessoaFisica('nome', 76367980008, endereco: validAddress);
 
   static void cadastrar() {
-    /*
     // inputs dos dados da empresa
     stdout.write('Razão Social: ');
     var razaoSocial = stdin.readLineSync() ?? '';
@@ -75,12 +74,29 @@ class Registro {
           razaoSocial: razaoSocial,
           socio: socio));
     }
-    */
-    db.add(Empresa(11941838000104, 19988380630,
+    /* auto add utilizado para testes
+    db.add(Empresa(
+      11941838000104,
+      19988380630,
+      endereco: validAddress,
+      nomeFantasia: 'Pães e Doces',
+      razaoSocial: 'Elisa e Flávia Pães e Doces ME',
+      socio: validPF,
+    ));
+    db.add(Empresa(
+      92456516000163,
+      11995726906,
+      endereco: validAddress,
+      nomeFantasia: 'Telas',
+      razaoSocial: 'Arthur e Andreia Telas Ltda',
+      socio: PessoaJuridica(
+        87009263000140,
         endereco: validAddress,
-        nomeFantasia: 'Pães e Doces',
-        razaoSocial: 'Elisa e Flávia Pães e Doces ME',
-        socio: validPF));
+        nomeFantasia: 'Loc. Auto',
+        razaoSocial: 'Lavínia e Tereza Locações de Automóveis Ltda',
+      ),
+    ));
+    */
   }
 
   static Pessoa pfCreate() {
@@ -188,12 +204,15 @@ class Registro {
     }
   }
 
-/*
-  // TODO: implement
-  static Empresa buscaSocioDoc(int socioDoc) {
-    return Empresa;
+  static void buscaSocioDoc(int socioDoc) {
+    try {
+      final empresa = db.firstWhere((e) => e.socio.documento == socioDoc);
+      empresa.printMe();
+    } catch (e) {
+      print('\nNão foi possível encontrar este CNPJ em nossos registros.');
+    }
   }
-*/
+
   static void printAll() {
     print('\x1B[2J\x1B[0;0H');
     db.sort(((a, b) => a.razaoSocial.compareTo(b.razaoSocial)));
