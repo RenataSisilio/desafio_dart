@@ -27,7 +27,7 @@ void menu() {
     case 2:
       stdout.write('\nCNPJ da empresa: ');
       input = int.tryParse(stdin.readLineSync()!) ?? 0;
-      Registro.buscaCNPJ(input).printMe();
+      Registro.buscaCNPJ(input);
       stdin.readLineSync();
       menu();
       break;

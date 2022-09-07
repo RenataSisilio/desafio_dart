@@ -178,11 +178,14 @@ class Registro {
     }
   }
 
-  // TODO: implement
-  static Empresa buscaCNPJ(int cnpj) {
-    final empresa = db.firstWhere(
-        (e) => e.cnpj.replaceAll(RegExp(r'[\.\-/]'), '') == cnpj.toString());
-    return empresa;
+  static void buscaCNPJ(int cnpj) {
+    try {
+      final empresa = db.firstWhere(
+          (e) => e.cnpj.replaceAll(RegExp(r'[\.\-/]'), '') == cnpj.toString());
+      empresa.printMe();
+    } catch (e) {
+      print('\nNão foi possível encontrar este CNPJ em nossos registros.');
+    }
   }
 
 /*
