@@ -63,7 +63,7 @@ class Empresa {
 
   void printMe() {
     print(
-        'ID: $id\nCNPJ: $cnpj Data Cadastro: $cadastroHora\nRazão Social: $razaoSocial\nNome Fantasia: $nomeFantasia\nTelefone: $telefone');
+        '\nID: $id\nCNPJ: $cnpj Data Cadastro: $cadastroHora\nRazão Social: $razaoSocial\nNome Fantasia: $nomeFantasia\nTelefone: $telefone');
     endereco.printMe();
     print('Sócio:');
     socio.printMe();

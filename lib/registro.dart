@@ -15,6 +15,7 @@ class Registro {
       PessoaFisica('nome', 76367980008, endereco: validAddress);
 
   static void cadastrar() {
+    /*
     // inputs dos dados da empresa
     stdout.write('Razão Social: ');
     var razaoSocial = stdin.readLineSync() ?? '';
@@ -24,12 +25,10 @@ class Registro {
     var cnpj = int.tryParse(stdin.readLineSync()!) ?? 0;
     stdout.write('Telefone: ');
     var telefone = int.tryParse(stdin.readLineSync()!) ?? 0;
-    stdout.write('\nEndereço:\n');
-    var endereco = addressCreate();
 
     // validação dos dados da empresa
     final test = Empresa(cnpj, telefone,
-        endereco: endereco,
+        endereco: validAddress,
         nomeFantasia: nomeFantasia,
         razaoSocial: razaoSocial,
         socio: validPF);
@@ -50,7 +49,10 @@ class Registro {
       print('\x1B[2J\x1B[0;0H');
       cadastrar();
     } else {
-      // cadastro do sócio após validação dos dados da empresa
+      // continuação após validação dos dados da empresa
+      stdout.write('\nEndereço:\n');
+      var endereco = addressCreate();
+
       var socio;
       do {
         error = false;
@@ -73,6 +75,12 @@ class Registro {
           razaoSocial: razaoSocial,
           socio: socio));
     }
+    */
+    db.add(Empresa(11941838000104, 19988380630,
+        endereco: validAddress,
+        nomeFantasia: 'Pães e Doces',
+        razaoSocial: 'Elisa e Flávia Pães e Doces ME',
+        socio: validPF));
   }
 
   static Pessoa pfCreate() {
@@ -170,12 +178,14 @@ class Registro {
     }
   }
 
-/*
   // TODO: implement
   static Empresa buscaCNPJ(int cnpj) {
-    return Empresa;
+    final empresa = db.firstWhere(
+        (e) => e.cnpj.replaceAll(RegExp(r'[\.\-/]'), '') == cnpj.toString());
+    return empresa;
   }
 
+/*
   // TODO: implement
   static Empresa buscaSocioDoc(int socioDoc) {
     return Empresa;
@@ -186,7 +196,6 @@ class Registro {
     db.sort(((a, b) => a.razaoSocial.compareTo(b.razaoSocial)));
     for (var element in db) {
       element.printMe();
-      print('');
     }
   }
 

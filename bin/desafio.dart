@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:desafio/registro.dart';
 
+// TODO: handle special characters inputs
 void main() {
   menu();
 }
 
 void menu() {
-  print(
-      '''
+  print('''\x1B[2J\x1B[0;0H
                       MENU INICIAL
 
   1. Cadastrar uma nova empresa
@@ -22,19 +22,25 @@ void menu() {
   switch (input) {
     case 1:
       Registro.cadastrar();
+      menu();
       break;
     case 2:
       stdout.write('\nCNPJ da empresa: ');
-      input = int.tryParse(stdin.readLineSync() ?? '0');
-      //Registro.buscaCNPJ(input);
+      input = int.tryParse(stdin.readLineSync()!) ?? 0;
+      Registro.buscaCNPJ(input).printMe();
+      stdin.readLineSync();
+      menu();
       break;
     case 3:
       stdout.write('\nCPF/CNPJ do sócio: ');
       input = int.tryParse(stdin.readLineSync() ?? '0');
       //Registro.buscaSocioDoc(input);
+      menu();
       break;
     case 4:
       Registro.printAll();
+      stdin.readLineSync();
+      menu();
       break;
     case 5:
       stdout.write('\nID da empresa: ');
