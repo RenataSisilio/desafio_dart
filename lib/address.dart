@@ -49,86 +49,87 @@ class Address {
       ];
       estado = verif.contains(estado.toUpperCase()) ? estado.toUpperCase() : '';
     } else if (estado.length > 2) {
+      estado = estado.toLowerCase();
       switch (estado) {
-        case 'Acre':
+        case 'acre':
           estado = 'AC';
           break;
-        case 'Alagoas':
+        case 'alagoas':
           estado = 'AL';
           break;
-        case 'Amapá':
+        case 'amapá':
           estado = 'AP';
           break;
-        case 'Amazonas':
+        case 'amazonas':
           estado = 'AM';
           break;
-        case 'Bahia':
+        case 'bahia':
           estado = 'BA';
           break;
-        case 'Ceará':
+        case 'ceará':
           estado = 'CE';
           break;
-        case 'Distrito Federal':
+        case 'distrito federal':
           estado = 'DF';
           break;
-        case 'Espírito Santo':
+        case 'espírito santo':
           estado = 'ES';
           break;
-        case 'Goiás':
+        case 'goiás':
           estado = 'GO';
           break;
-        case 'Maranhão':
+        case 'maranhão':
           estado = 'MA';
           break;
-        case 'Mato Grosso':
+        case 'mato grosso':
           estado = 'MT';
           break;
-        case 'Mato Grosso do Sul':
+        case 'mato grosso do sul':
           estado = 'MS';
           break;
-        case 'Minas Gerais':
+        case 'minas gerais':
           estado = 'MG';
           break;
-        case 'Pará':
+        case 'pará':
           estado = 'PA';
           break;
-        case 'Paraíba':
+        case 'paraíba':
           estado = 'PB';
           break;
-        case 'Paraná':
+        case 'paraná':
           estado = 'PR';
           break;
-        case 'Pernambuco':
+        case 'pernambuco':
           estado = 'PE';
           break;
-        case 'Piauí':
+        case 'piauí':
           estado = 'PI';
           break;
-        case 'Rio de Janeiro':
+        case 'rio de janeiro':
           estado = 'RJ';
           break;
-        case 'Rio Grande do Norte':
+        case 'rio grande do norte':
           estado = 'RN';
           break;
-        case 'Rio Grande do Sul':
+        case 'rio grande do sul':
           estado = 'RS';
           break;
-        case 'Rondônia':
+        case 'rondônia':
           estado = 'RO';
           break;
-        case 'Roraima':
+        case 'roraima':
           estado = 'RR';
           break;
-        case 'Santa Catarina':
+        case 'santa catarina':
           estado = 'SC';
           break;
-        case 'São Paulo':
+        case 'são paulo':
           estado = 'SP';
           break;
-        case 'Sergipe':
+        case 'sergipe':
           estado = 'SE';
           break;
-        case 'Tocantins':
+        case 'tocantins':
           estado = 'TO';
           break;
         default:
