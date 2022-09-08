@@ -4,10 +4,10 @@ import 'package:uuid/uuid.dart';
 
 class Empresa {
   final int _cnpj;
+  final String _id = Uuid().v1();
   final int _telefone;
   DateTime cadastroHora = DateTime.now();
   Address endereco;
-  String id = Uuid().v1();
   String nomeFantasia;
   String razaoSocial;
   Pessoa socio;
@@ -20,6 +20,8 @@ class Empresa {
     required this.razaoSocial,
     required this.socio,
   });
+
+  String get id => _id;
 
   // ------- validação oficial de CNPJ (segundo Ministério da Fazenda) -------
   String get cnpj {
@@ -68,4 +70,15 @@ class Empresa {
     print('Sócio:');
     socio.printMe();
   }
+
+  Map toJson() => <String, dynamic>{
+        'cnpj': _cnpj,
+        'telefone': telefone,
+        'cadastroHora': cadastroHora.toString(),
+        'endereco': endereco.toJson(),
+        'id': id,
+        'nomeFantasia': nomeFantasia,
+        'razaoSocial': razaoSocial,
+        'socio': socio.toJson()
+      };
 }

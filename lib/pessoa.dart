@@ -2,7 +2,7 @@
 import 'package:desafio/address.dart';
 
 abstract class Pessoa {
-  int _documento;
+  final int _documento;
   Address endereco;
 
   Pessoa(
@@ -13,4 +13,6 @@ abstract class Pessoa {
   int get documento => _documento;
 
   void printMe();
+
+  Map toJson();
 }

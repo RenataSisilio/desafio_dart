@@ -154,4 +154,14 @@ class Address {
     print(
         'Endereço: $logradouro, $numero$complemento, $bairro, $cidade/$estado, $cep');
   }
+
+  Map toJson() => <String, dynamic>{
+  'cep':_cep,
+  'bairro':bairro,
+  'cidade':cidade,
+  'complemento':complemento,
+  'estado':estado,
+  'logradouro':logradouro,
+  'numero':numero
+  };
 }

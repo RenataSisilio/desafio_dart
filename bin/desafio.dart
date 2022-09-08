@@ -50,6 +50,7 @@ void menu() {
       menu();
       break;
     case 6:
+      Registro.saveDB();
       break;
     default:
       menu();

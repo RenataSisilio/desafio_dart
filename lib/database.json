@@ -1,0 +1,63 @@
+[
+    {
+        "cnpj":11941838000104,
+        "telefone":"(19) 9 8838-0630",
+        "cadastroHora":"2022-09-08 20:16:26.045025",
+        "endereco": {
+            "cep":0,
+            "bairro":"b",
+            "cidade":"c",
+            "complemento":"",
+            "estado":"MG",
+            "logradouro":"l",
+            "numero":1
+        },
+    "id":"42e3c290-2fcc-11ed-930d-9367e09afc7d",
+    "nomeFantasia":"Pães e Doces",
+    "razaoSocial":"Elisa e Flávia Pães e Doces ME",
+    "socio": {
+        "nome":"nome",
+        "cpf":76367980008,
+        "endereco": {
+            "cep":0,
+            "bairro":"b",
+            "cidade":"c",
+            "complemento":"",
+            "estado":"MG",
+            "logradouro":"l",
+            "numero":1
+            }
+        }
+    },
+    {
+        "cnpj":92456516000163,
+        "telefone":"(11) 9 9572-6906",
+        "cadastroHora":"2022-09-08 20:16:26.045025",
+        "endereco": {
+            "cep":0,
+            "bairro":"b",
+            "cidade":"c",
+            "complemento":"",
+            "estado":"MG",
+            "logradouro":"l",
+            "numero":1
+        },
+        "id":"42e45ed0-2fcc-11ed-90ba-b304c4b33547",
+        "nomeFantasia":"Telas",
+        "razaoSocial":"Arthur e Andreia Telas Ltda",
+        "socio":{
+            "nomeFantasia":"Loc. Auto",
+            "razaoSocial":"Lavínia e Tereza Locações de Automóveis Ltda",
+            "cpf":87009263000140,
+            "endereco":{
+                "cep":0,
+                "bairro":"b",
+                "cidade":"c",
+                "complemento":"",
+                "estado":"MG",
+                "logradouro":"l",
+                "numero":1
+            }
+        }
+    }
+]

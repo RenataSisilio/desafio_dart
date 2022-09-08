@@ -46,4 +46,12 @@ class PessoaJuridica extends Pessoa {
         'CNPJ: $cnpj\nRazão social: $razaoSocial\nNome fantasia: $nomeFantasia');
     endereco.printMe();
   }
+
+  @override
+  Map toJson() => <String, dynamic>{
+        'nomeFantasia': nomeFantasia,
+        'razaoSocial': razaoSocial,
+        'cpf': documento,
+        'endereco': endereco.toJson()
+      };
 }

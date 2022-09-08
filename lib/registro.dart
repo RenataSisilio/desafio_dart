@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:desafio/address.dart';
@@ -15,6 +16,7 @@ class Registro {
       PessoaFisica('nome', 76367980008, endereco: validAddress);
 
   static void cadastrar() {
+    /*
     // inputs dos dados da empresa
     stdout.write('Razão Social: ');
     var razaoSocial = stdin.readLineSync() ?? '';
@@ -74,7 +76,8 @@ class Registro {
           razaoSocial: razaoSocial,
           socio: socio));
     }
-    /* auto add utilizado para testes
+    // auto add utilizado para testes
+    */
     db.add(Empresa(
       11941838000104,
       19988380630,
@@ -96,7 +99,6 @@ class Registro {
         razaoSocial: 'Lavínia e Tereza Locações de Automóveis Ltda',
       ),
     ));
-    */
   }
 
   static Pessoa pfCreate() {
@@ -223,5 +225,14 @@ class Registro {
 
   static void excluir(String id) {
     db.removeWhere((element) => element.id == id);
+  }
+
+  static void saveDB() {
+    var tojson = [];
+    for (var empresa in db) {
+      tojson.add(empresa.toJson());
+    }
+    var encoded = jsonEncode(tojson);
+    File('lib/database.json').writeAsString(encoded);
   }
 }
