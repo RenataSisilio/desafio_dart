@@ -27,11 +27,14 @@ class Registro {
     var telefone = int.tryParse(stdin.readLineSync()!) ?? 0;
 
     // validação dos dados da empresa
-    final test = Empresa(cnpj, telefone,
-        endereco: validAddress,
-        nomeFantasia: nomeFantasia,
-        razaoSocial: razaoSocial,
-        socio: validPF);
+    final test = Empresa(
+      cnpj,
+      telefone,
+      endereco: validAddress,
+      nomeFantasia: nomeFantasia,
+      razaoSocial: razaoSocial,
+      socio: validPF,
+    );
     var error = false;
     var errorMsg = ' -------------------- ERRO --------------------\n';
     if (test.cnpj == '') {
@@ -69,11 +72,14 @@ class Registro {
       } while (error);
 
       // cadastro da empresa após validação de todos os dados
-      db.add(Empresa(cnpj, telefone,
-          endereco: endereco,
-          nomeFantasia: nomeFantasia,
-          razaoSocial: razaoSocial,
-          socio: socio));
+      db.add(Empresa(
+        cnpj,
+        telefone,
+        endereco: endereco,
+        nomeFantasia: nomeFantasia,
+        razaoSocial: razaoSocial,
+        socio: socio,
+      ));
     }
   }
 
@@ -84,7 +90,11 @@ class Registro {
     var cpf = int.tryParse(stdin.readLineSync()!) ?? 0;
 
     // validação dos dados do sócio
-    final test = PessoaFisica(nome, cpf, endereco: validAddress);
+    final test = PessoaFisica(
+      nome,
+      cpf,
+      endereco: validAddress,
+    );
     if (test.cpf == '') {
       print(
           ' -------------------- ERRO --------------------\n  -> Sócio: CPF inválido\nTente novamente...\n\nSócio:');
@@ -93,7 +103,11 @@ class Registro {
       // criação do endereço após validação dos dados do sócio
       stdout.write('\nEndereço do sócio:\n');
       var endereco = addressCreate();
-      return PessoaFisica(nome, cpf, endereco: endereco);
+      return PessoaFisica(
+        nome,
+        cpf,
+        endereco: endereco,
+      );
     }
   }
 
@@ -106,10 +120,12 @@ class Registro {
     var cnpj = int.tryParse(stdin.readLineSync()!) ?? 0;
 
     // validação dos dados do sócio
-    var test = PessoaJuridica(cnpj,
-        endereco: validAddress,
-        nomeFantasia: nomeFantasia,
-        razaoSocial: razaoSocial);
+    var test = PessoaJuridica(
+      cnpj,
+      endereco: validAddress,
+      nomeFantasia: nomeFantasia,
+      razaoSocial: razaoSocial,
+    );
     if (test.cnpj == '') {
       print(
           ' -------------------- ERRO --------------------\n  -> Sócio: CNPJ inválido\nTente novamente...\n\nSócio:');
@@ -118,10 +134,12 @@ class Registro {
       // criação do endereço após validação dos dados do sócio
       stdout.write('\nEndereço do sócio:\n');
       var endereco = addressCreate();
-      return PessoaJuridica(cnpj,
-          endereco: endereco,
-          nomeFantasia: nomeFantasia,
-          razaoSocial: razaoSocial);
+      return PessoaJuridica(
+        cnpj,
+        endereco: endereco,
+        nomeFantasia: nomeFantasia,
+        razaoSocial: razaoSocial,
+      );
     }
   }
 
@@ -140,13 +158,15 @@ class Registro {
     var estado = stdin.readLineSync() ?? '';
     stdout.write('CEP: ');
     var cep = int.tryParse(stdin.readLineSync()!) ?? 0;
-    final address = Address(cep,
-        bairro: bairro,
-        cidade: cidade,
-        complemento: complemento,
-        estado: estado,
-        logradouro: logradouro,
-        numero: numero);
+    final address = Address(
+      cep,
+      bairro: bairro,
+      cidade: cidade,
+      complemento: complemento,
+      estado: estado,
+      logradouro: logradouro,
+      numero: numero,
+    );
 
     // validação do endereço
     var error = false;
