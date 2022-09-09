@@ -51,7 +51,7 @@ class PessoaJuridica extends Pessoa {
   Map toJson() => <String, dynamic>{
         'nomeFantasia': nomeFantasia,
         'razaoSocial': razaoSocial,
-        'cpf': documento,
+        'cnpj': documento,
         'endereco': endereco.toJson()
       };
 }

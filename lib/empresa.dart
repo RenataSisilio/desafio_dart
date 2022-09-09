@@ -1,5 +1,7 @@
 import 'package:desafio/address.dart';
 import 'package:desafio/pessoa.dart';
+import 'package:desafio/pessoa_fisica.dart';
+import 'package:desafio/pessoa_juridica.dart';
 import 'package:uuid/uuid.dart';
 
 class Empresa {
@@ -20,6 +22,53 @@ class Empresa {
     required this.razaoSocial,
     required this.socio,
   });
+
+  factory Empresa.fromJson(Map<String, dynamic> json) {
+    final Pessoa soc;
+    if (json['socio']['cpf'] != null) {
+      soc = PessoaFisica(
+        json['socio']['nome'],
+        json['socio']['cpf'],
+        endereco: Address(
+          json['socio']['endereco']['cep'],
+          bairro: json['socio']['endereco']['bairro'],
+          cidade: json['socio']['endereco']['cidade'],
+          estado: json['socio']['endereco']['estado'],
+          logradouro: json['socio']['endereco']['logradouro'],
+          numero: json['socio']['endereco']['numero'],
+        ),
+      );
+    } else {
+      soc = PessoaJuridica(
+        json['socio']['cnpj'],
+        endereco: Address(
+          json['socio']['endereco']['cep'],
+          bairro: json['socio']['endereco']['bairro'],
+          cidade: json['socio']['endereco']['cidade'],
+          estado: json['socio']['endereco']['estado'],
+          logradouro: json['socio']['endereco']['logradouro'],
+          numero: json['socio']['endereco']['numero'],
+        ),
+        razaoSocial: json['socio']['razaoSocial'],
+        nomeFantasia: json['socio']['nomeFantasia'],
+      );
+    }
+    return Empresa(
+      json['cnpj'],
+      json['telefone'],
+      endereco: Address(
+        json['endereco']['cep'],
+        bairro: json['endereco']['bairro'],
+        cidade: json['endereco']['cidade'],
+        estado: json['endereco']['estado'],
+        logradouro: json['endereco']['logradouro'],
+        numero: json['endereco']['numero'],
+      ),
+      nomeFantasia: json['nomeFantasia'],
+      razaoSocial: json['razaoSocial'],
+      socio: soc,
+    );
+  }
 
   String get id => _id;
 
@@ -73,7 +122,7 @@ class Empresa {
 
   Map toJson() => <String, dynamic>{
         'cnpj': _cnpj,
-        'telefone': telefone,
+        'telefone': _telefone,
         'cadastroHora': cadastroHora.toString(),
         'endereco': endereco.toJson(),
         'id': id,

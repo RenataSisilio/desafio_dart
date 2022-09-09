@@ -77,7 +77,7 @@ class Registro {
           socio: socio));
     }
     // auto add utilizado para testes
-    */
+    
     db.add(Empresa(
       11941838000104,
       19988380630,
@@ -98,7 +98,7 @@ class Registro {
         nomeFantasia: 'Loc. Auto',
         razaoSocial: 'Lavínia e Tereza Locações de Automóveis Ltda',
       ),
-    ));
+    ));*/
   }
 
   static Pessoa pfCreate() {
@@ -234,5 +234,12 @@ class Registro {
     }
     var encoded = jsonEncode(tojson);
     File('lib/database.json').writeAsString(encoded);
+  }
+
+  static void initDB() {
+    final json = jsonDecode(File('lib/database.json').readAsStringSync());
+    for (var e in json) {
+      db.add(Empresa.fromJson(e));
+    }
   }
 }

@@ -4,6 +4,7 @@ import 'package:desafio/registro.dart';
 
 // TODO: handle special characters inputs
 void main() {
+  Registro.initDB();
   menu();
 }
 
