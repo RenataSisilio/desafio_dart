@@ -37,6 +37,14 @@ class Registro {
     );
     var error = false;
     var errorMsg = ' -------------------- ERRO --------------------\n';
+    if (test.razaoSocial == '') {
+      error = true;
+      errorMsg += '  -> Razão social em branco\n';
+    }
+    if (test.nomeFantasia == '') {
+      error = true;
+      errorMsg += '  -> Nome fantasia em branco\n';
+    }
     if (test.cnpj == '') {
       error = true;
       errorMsg += '  -> CNPJ inválido\n';
@@ -56,7 +64,7 @@ class Registro {
       stdout.write('\nEndereço:\n');
       var endereco = addressCreate();
 
-      var socio;
+      late Pessoa socio;
       do {
         error = false;
         stdout.write(
@@ -83,7 +91,7 @@ class Registro {
     }
   }
 
-  static Pessoa pfCreate() {
+  static PessoaFisica pfCreate() {
     stdout.write('Nome: ');
     var nome = stdin.readLineSync() ?? '';
     stdout.write('CPF: ');
@@ -95,9 +103,18 @@ class Registro {
       cpf,
       endereco: validAddress,
     );
+    var error = false;
+    var errorMsg = ' -------------------- ERRO --------------------\n';
+    if (test.nome == '') {
+      error = true;
+      errorMsg += '  -> Nome em branco\n';
+    }
     if (test.cpf == '') {
-      print(
-          ' -------------------- ERRO --------------------\n  -> Sócio: CPF inválido\nTente novamente...\n\nSócio:');
+      error = true;
+      errorMsg += '  -> CPF inválido\n';
+    }
+    if (error) {
+      print(errorMsg);
       return pfCreate();
     } else {
       // criação do endereço após validação dos dados do sócio
@@ -111,7 +128,7 @@ class Registro {
     }
   }
 
-  static Pessoa pjCreate() {
+  static PessoaJuridica pjCreate() {
     stdout.write('Razão social: ');
     var razaoSocial = stdin.readLineSync() ?? '';
     stdout.write('Nome fantasia: ');
@@ -126,9 +143,22 @@ class Registro {
       nomeFantasia: nomeFantasia,
       razaoSocial: razaoSocial,
     );
+    var error = false;
+    var errorMsg = ' -------------------- ERRO --------------------\n';
+    if (test.razaoSocial == '') {
+      error = true;
+      errorMsg += '  -> Razão social em branco\n';
+    }
+    if (test.nomeFantasia == '') {
+      error = true;
+      errorMsg += '  -> Nome fantasia em branco\n';
+    }
     if (test.cnpj == '') {
-      print(
-          ' -------------------- ERRO --------------------\n  -> Sócio: CNPJ inválido\nTente novamente...\n\nSócio:');
+      error = true;
+      errorMsg += '  -> CNPJ inválido\n';
+    }
+    if (error) {
+      print(errorMsg);
       return pjCreate();
     } else {
       // criação do endereço após validação dos dados do sócio
