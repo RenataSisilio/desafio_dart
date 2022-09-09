@@ -4,6 +4,7 @@ import 'package:desafio/registro.dart';
 
 // TODO: handle special characters inputs
 void main() {
+  Registro.initDB();
   menu();
 }
 
@@ -50,6 +51,7 @@ void menu() {
       menu();
       break;
     case 6:
+      Registro.saveDB();
       break;
     default:
       menu();

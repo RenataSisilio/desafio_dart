@@ -46,4 +46,11 @@ class PessoaFisica extends Pessoa {
     print('CPF: $cpf\nNome completo: $nome');
     endereco.printMe();
   }
+
+  @override
+  Map toJson() => <String, dynamic>{
+        'nome': nome,
+        'cpf': documento,
+        'endereco': endereco.toJson()
+      };
 }
